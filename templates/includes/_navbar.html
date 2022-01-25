@@ -1,0 +1,79 @@
+<style>
+a {
+  display: block;
+  padding: 75px;
+  font-family: Verdana;
+  font-size: 15px;
+  font-weight: bold;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+</style>
+<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img width="50px" height="50px" src="static/logo.jpg" alt="">     Cove Reno</a>
+      <span class="navbar-toggle-icon"></span>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">HOME</a>
+        </li>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">SHOWROOM</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/brands">BRANDS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">REWARDS</a>
+        </li>
+      </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="#">FEEDBACK</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CART</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/">Packages</a></li>
+            <li><a class="dropdown-item" href="/">Customer Request List</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">ACCOUNTS</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/">Profile</a></li>
+            <li><a class="dropdown-item" href="/createUser">Create</a></li>
+            <li><a class="dropdown-item" href="/retrieveUsers">Retrieve</a></li>
+             <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+          </ul>
+        </li>
+
+        <!--<li class="nav-item">
+          <a class="nav-link" href="/searchCustomer">Search</a>
+        </li>-->
+    </div>
+  </div>
+</nav>
