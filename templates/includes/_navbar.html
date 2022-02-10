@@ -1,9 +1,9 @@
 <style>
 a {
   display: block;
-  padding: 75px;
+  padding: 55px;
   font-family: Verdana;
-  font-size: 25px;
+  font-size: 15px;
   font-weight: bold;
 }
 ul {
@@ -41,39 +41,51 @@ li a:hover {
         </li>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">SHOWROOM</a>
+          <a class="nav-link" href="/Showroom">SHOWROOM</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/brands">BRANDS</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">REWARDS</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">REWARD</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/Reward">Main Page</a></li>
+            <li><a class="dropdown-item" href="/searchReward">Search</a></li>
+            <li><a class="dropdown-item" href="/retrieveReward">Retrieve all</a></li>
+          </ul>
         </li>
       </ul>
-        <li class="nav-item">
-          <a class="nav-link" href="#">FEEDBACK</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">FEEDBACK</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/retrieveFeedback">Retrieve</a></li>
+            <li><a class="dropdown-item" href="/searchUser">Search Name</a></li>
+            <li><a class="dropdown-item" href="/searchStatus">Search Status</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CART</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">CARTS</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/">Packages</a></li>
-            <li><a class="dropdown-item" href="/">Customer Request List</a></li>
+            <li><a class="dropdown-item" href="/retrievePackageA">Package A</a></li>
+            <li><a class="dropdown-item" href="/retrievePackageB">Package B</a></li>
+            <li><a class="dropdown-item" href="/retrievePackageC">Package C</a></li>
+            <li><a class="dropdown-item" href="/retrievePackageD">Package D</a></li>
+            <li><a class="dropdown-item" href="/retrieveUserRequestForm">Customer Request List</a></li>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">ACCOUNTS</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/">Profile</a></li>
             <li><a class="dropdown-item" href="/createUser">Create</a></li>
             <li><a class="dropdown-item" href="/retrieveUsers">Retrieve</a></li>
              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
           </ul>
         </li>
 
-        <!--<li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/searchCustomer">Search</a>
-        </li>-->
+        </li>
     </div>
   </div>
 </nav>

@@ -1,12 +1,29 @@
 <html>
 <style>
-
+html {
+  padding: 20px;
+  background: #848992;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.header {
+  text-style:bold;
+  text-align: center;
+  background: #848992;
+  color: white;
+  font-size: 50px;
+  }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login</title>
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <div class ='header'>
+    <h1>Log In</h1>
+  </div>
+
 
 </head>
 
@@ -22,7 +39,7 @@
                 <div class="control has-icons-left has-icons-right">
                   <input class="input" type="text" name="username" placeholder="Username">
                   <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+                    <i class="fa fa-user"></i>
                   </span>
                 </div>
               </div>
@@ -31,7 +48,7 @@
                 <div class="control has-icons-left">
                   <input class="input" type="password" name="password" placeholder="Password">
                   <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
+                    <i class="fa fa-lock"></i>
                   </span>
                 </div>
               </div>
@@ -45,7 +62,7 @@
               <div class="field">
                 <p>
                   <span>Don't have an account?</span>
-                  <a href="/createUser">Register</a>
+                  <a href="/createCustomer">Register</a>
                 </p>
               </div>
             </form>
