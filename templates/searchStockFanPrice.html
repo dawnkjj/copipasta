@@ -1,0 +1,14 @@
+{% extends "base2.html" %}
+{% block title %}Cove Reno - Search StockFans{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<form method="post" action="">
+    <div class="form-group">
+        {{ render_field(form.searchStockFanPrice, class="form-control", style="width:20%") }}
+    </div>
+    <p><input type="submit" value="Search"></p>
+</form>
+
+{% endblock %}

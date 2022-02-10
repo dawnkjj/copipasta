@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Cove Reno
+- Retrieve StockTiles{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Retrieve Tile Stock</h1>
+<div>
+{% if count == 0 %}
+  <p>There are no Tile Stock.</p>
+  {% elif count == 1 %}
+  <p>There is 1 Tile Stock.</p>
+  {% else %}
+  <p>There are {{ count }} Tile Stocks.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>StockTile ID</th>
+        <th>StockTile Name</th>
+        <th>StockTile Count</th>
+        <th>Colour</th>
+        <th>price</th>
+        <th>Date Created</th>
+        <th>Remarks</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for stockTile in stockTiles_list %}
+      <tr>
+        <td>{{ stockTile.get_stock_id() }}</td>
+        <td>{{ stockTile.get_stock_name() }}</td>
+        <td>{{ stockTile.get_stock_count() }}</td>
+        <td>{{ stockTile.get_colour() }}</td>
+        <td>{{ stockTile.get_price() }}</td>
+        <td>{{ stockTile.get_date_created() }}</td>
+        <td>{{ stockTile.get_remarks() }}</td>
+        <td><a href="/updateStockTiles/{{stockTile.get_stock_id()}}" class="btn btn-warning">Update</a></td>
+        <td>
+          <form action="{{url_for('delete_stockTile', id=stockTile.get_stock_id())}}" method="POST">
+
+
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_{{stockTile.get_stock_id()}}">
+  Delete
+</button>
+
+
+<div class="modal" id="myModal_{{stockTile.get_stock_id()}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Confirmation</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+
+      <div class="modal-body">
+        Are you sure you want to delete {{stockTile.get_stock_name()}} {{stockTile.get_stock_count()}}?
+      </div>
+
+
+
+      <div class="modal-footer">
+            <input type="submit" value="Delete" class="btn btn-danger">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

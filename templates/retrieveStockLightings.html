@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Cove Reno
+- Retrieve StockLightings{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Retrieve Lighting Stocks</h1>
+<div>
+{% if count == 0 %}
+  <p>There are no Lighting Stocks.</p>
+  {% elif count == 1 %}
+  <p>There is 1 Lighting Stock.</p>
+  {% else %}
+  <p>There are {{ count }} Lighting Stocks.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>StockLighting ID</th>
+        <th>StockLighting Name</th>
+        <th>StockLighting Count</th>
+        <th>Colour</th>
+        <th>price</th>
+        <th>Date Created</th>
+        <th>Remarks</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for stockLighting in stockLightings_list %}
+      <tr>
+        <td>{{ stockLighting.get_stock_id() }}</td>
+        <td>{{ stockLighting.get_stock_name() }}</td>
+        <td>{{ stockLighting.get_stock_count() }}</td>
+        <td>{{ stockLighting.get_colour() }}</td>
+        <td>{{ stockLighting.get_price() }}</td>
+        <td>{{ stockLighting.get_date_created() }}</td>
+        <td>{{ stockLighting.get_remarks() }}</td>
+        <td><a href="/updateStockLightings/{{stockLighting.get_stock_id()}}" class="btn btn-warning">Update</a></td>
+        <td>
+          <form action="{{url_for('delete_stockLighting', id=stockLighting.get_stock_id())}}" method="POST">
+
+
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_{{stockLighting.get_stock_id()}}">
+  Delete
+</button>
+
+
+<div class="modal" id="myModal_{{stockLighting.get_stock_id()}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Confirmation</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+
+      <div class="modal-body">
+        Are you sure you want to delete {{stockLighting.get_stock_name()}} {{stockLighting.get_stock_count()}}?
+      </div>
+
+
+
+      <div class="modal-footer">
+            <input type="submit" value="Delete" class="btn btn-danger">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

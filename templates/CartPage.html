@@ -1,0 +1,66 @@
+<style>
+.button {
+  background-color: #FFA500;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+{% extends "base2.html" %}
+{% block title %}Cove Reno - Retrieve Cart Info{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Your Cart</h1>
+<a href="/createRequestForm" class="button">Back</a>
+  <div>
+    {% if count == 0 %}
+    <p>There are no order.</p>
+    {% elif count == 1 %}
+    <p>There is 1 order.</p>
+    {% else %}
+    <p>There are {{ count }} orders.</p>
+    {% endif %}
+  </div>
+  <p>Please confirm your order.</p>
+  <div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Request ID</th>
+        <th>Type of Service</th>
+        <th>Type of Installation</th>
+        <th>Type of Items</th>
+        <th>Type of Brands</th>
+        <th>Item Name</th>
+        <th>Cost</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for rqform in usersrequestform_list %}
+      <tr>
+        <td><a href="/updateUserRequestForm/{{rqform.get_request_id()}}"  class="btn btn-warning">Edit</a></td>
+        <td>{{ rqform.get_request_id() }}</td>
+        <td>{{ rqform.get_type_of_services() }}</td>
+        <td>{{ rqform.get_type_of_installation() }}</td>
+        <td>{{ rqform.get_type_of_items() }}</td>
+        <td>{{ rqform.get_type_of_brands() }}</td>
+        <td>{{ rqform.get_items_available() }}</td>
+        <td>{{ rqform.get_amount() }}</td>
+        <td>
+          <form action="{{url_for('delete_userrequestform', id=rqform.get_request_id())}}" method="POST">
+            <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

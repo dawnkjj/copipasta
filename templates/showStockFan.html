@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Cove Reno
+- Show StockFans{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Search Fan Stock</h1>
+<div>
+{% if count == 0 %}
+  <p>There are no Fan Stocks.</p>
+  {% elif count == 1 %}
+  <p>There is 1 Fan Stock.</p>
+  {% else %}
+  <p>There are {{ count }} Fan Stocks.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>StockFan ID</th>
+        <th>StockFan Name</th>
+        <th>StockFan Count</th>
+        <th>Colour</th>
+        <th>price</th>
+        <th>Date Created</th>
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for stockFan in stockFans_list %}
+      <tr>
+        <td>{{ stockFan.get_stock_id() }}</td>
+        <td>{{ stockFan.get_stock_name() }}</td>
+        <td>{{ stockFan.get_stock_count() }}</td>
+        <td>{{ stockFan.get_colour() }}</td>
+        <td>{{ stockFan.get_price() }}</td>
+        <td>{{ stockFan.get_date_created() }}</td>
+        <td>{{ stockFan.get_remarks() }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

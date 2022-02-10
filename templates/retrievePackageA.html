@@ -1,0 +1,185 @@
+<style>
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 150px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 50%; /* Full width */
+  height: 50%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #ffc400
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #e8e9eb;
+  margin: auto;
+  padding: 50px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+{% extends "base.html" %}
+{% block title %}Library Loan System - Retrieve Packages{% endblock %}
+
+{% block content %}
+
+<h1 class="display-4">Retrieve Package</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no packages.</p>
+  {% elif count == 1 %}
+  <p>There is 1 package.</p>
+  {% else %}
+  <p>There are {{ count }} package.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Type of Packages</th>
+        <th>Type of Service</th>
+        <th>Type of Installation</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rqform in packages_list %}
+        <tr>
+          <td>{{ rqform.get_order_id() }}</td>
+        <td>{{ rqform.get_package_type() }}</td>
+        <td>{{ rqform.get_service() }}</td>
+        <td>{{ rqform.get_installation() }}</td>
+        <td></td>
+        <td></td>
+          <td>
+
+              <!-- Trigger/Open The Modal -->
+              <button class="btn btn-warning" id="myBtn">View</button>
+
+              <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h3>Package Information</h3>
+                  <table border="1">
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Package Type</th>
+                      <th>Service</th>
+                      <th>Installation</th>
+                      <th>Brand</th>
+                      <th>Product 1</th>
+                      <th>Product 2</th>
+                      <th>Product 3</th>
+                    </tr>
+                    <tr>
+                      <td>{{ rqform.get_order_id() }}</td>
+                      <td>{{ rqform.get_package_type() }}</td>
+                      <td>{{ rqform.get_service() }}</td>
+                      <td>{{ rqform.get_installation() }}</td>
+                      <td>{{ rqform.get_brand() }}</td>
+                      <td>{{ rqform.get_product1() }}</td>
+                      <td>{{ rqform.get_product2() }}</td>
+                      <td>{{ rqform.get_product3() }}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+            <form action="{{url_for('delete_package', id=rqform.get_order_id())}}" method="POST">
+              <!--<input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{ rqform.get_package_type() }}?');">-->
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_{{ rqform.get_order_id() }}">
+                Delete
+              </button>
+
+              <!-- The Modal -->
+              <div class="modal" id="myModal_{{ rqform.get_order_id() }}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Delete Confirmation</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      Are you sure you want to delete {{ rqform.get_order_id() }} {{ rqform.get_package_type() }}?
+                    </div>
+
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <input type="submit" value="Delete" class="btn btn-danger">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+{% endblock %}

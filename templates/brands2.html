@@ -1,0 +1,48 @@
+{% extends "base2.html" %}
+{% block title %}Cove Reno - Brands{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .stockpics {
+  width:150px;
+  height:150px;
+  }
+
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+</style>
+
+<h1 class="display-4"> Brands</h1>
+<p> Browse through these exclusive partnered brands to get more value when shopping for your home!</p>
+<table  border="2" cellpadding="2">
+  <tr>
+    <th>Fans</th>
+    <th>Lights</th>
+    <th>Paints</th>
+    <th>Tiles</th>
+    <th>Others</th>
+  </tr>
+  <tr>
+    <td><img class="stockpics" src="static/fan.png" ></td>
+    <td><img class="stockpics" src="static/light.jpg" ></td>
+    <td><img class="stockpics" src="static/paint.jpg" ></td>
+    <td><img class="stockpics" src="static/tile.JPEG" ></td>
+    <td><img class="stockpics" src="static/question.jpg" ></td>
+  </tr>
+  <tr>
+    <td><a href="/retrieveStockFans" class="btn btn-info">View Stock</a></td>
+    <td><a href="/retrieveStockLightings" class="btn btn-info">View Stock</a></td>
+    <td><a href="/retrieveStockPaints" class="btn btn-info">View Stock</a></td>
+    <td><a href="/retrieveStockTiles" class="btn btn-info">View Stock</a></td>
+    <td><a href="/retrieveStockOthers" class="btn btn-info">View Stock</a></td>
+  </tr>
+</table>
+
+
+
+{% endblock %}

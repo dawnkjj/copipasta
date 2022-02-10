@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block title %}Cove Reno - Submit Feedback{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<form method="post" action="">
+    <div class="form-group">
+        {{ render_field(form.searchUser, class="form-control", style="width:20%") }}
+    </div>
+    <p><input type="submit" value="Search">
+    </p></form>
+
+
+{% endblock %}

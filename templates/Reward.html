@@ -1,0 +1,32 @@
+<style>
+    h1{
+    text-align:center}
+    p{
+    text-align:center}
+    .pretty{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;}
+</style>
+
+{% extends "base2.html" %}
+{% block title %}Library Loan System - Packages{% endblock %}
+
+{% block content %}
+
+<h1 class="display-4">Rewards System</h1>
+<p>Create a new account and Join our Rewards System</p>
+<p>For every $1 spent = 1 point</p>
+<p>Use your points to redeem vouchers to use on your next purchase</p>
+<br>
+<br>
+<p> Click Below to fill in the Reward Form to claim your vouchers</p>
+<p>Please login in to claim your rewards</p>
+<br>
+<p><a href="/Login" class="btn btn-info">Sign in</a></p>
+<p><a href="/Rewardform" class="btn btn-info">Reward Form</a></p>
+<br>
+<br>
+{% endblock %}
+

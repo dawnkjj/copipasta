@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Cove Reno - Customer Orders{% endblock %}
+
+{% block content %}
+<form method="POST" action="">
+<h1 class="display-4">Customers Order Details</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no order.</p>
+  {% elif count == 1 %}
+  <p>There is 1 order.</p>
+  {% else %}
+  <p>There are {{ count }} orders.</p>
+  {% endif %}
+</div>
+
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Request ID</th>
+        <th>Type of Service</th>
+        <th>Type of Installation</th>
+        <th>Type of Items</th>
+        <th>Type of Brands</th>
+        <th>Item Name</th>
+        <th>Est. Start Date</th>
+        <th>Est. End Date</th>
+        <th>Renovation Status</th>
+        <th>Remarks</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for form in usersrequestform_list %}
+      <tr>
+        <td>{{ form.get_request_id() }}</td>
+        <td>{{ form.get_type_of_services() }}</td>
+        <td>{{ form.get_type_of_installation() }}</td>
+        <td>{{ form.get_type_of_items() }}</td>
+        <td>{{ form.get_type_of_brands() }}</td>
+        <td>{{ form.get_items_available() }}</td>
+        <td>{{ form.get_startdate() }}</td>
+        <td>{{ form.get_enddate() }}</td>
+        <td>{{ form.get_workcompletion_status() }}</td>
+        <td>{{ form.get_remarks() }} </td>
+        <td><a href="/updateAdminRequestForm/{{form.get_request_id()}}"  class="btn btn-warning">Update</a></td>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</form>
+{% endblock %}
+

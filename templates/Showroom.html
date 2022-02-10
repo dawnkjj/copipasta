@@ -1,0 +1,37 @@
+<style>
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+  font-size: 60px;
+}
+
+#test {
+  opacity: 0.5;
+  max-width: auto;
+  height: auto;
+}
+.owo {text-align: center;}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
+
+{% extends "base.html" %}
+{% block title %}Cove Reno - Showroom{% endblock %}
+
+{% block content %}
+<div class="container">
+  <img src="static/showroomtitle.JPG" id="test" >
+  <div class="centered">SHOWROOM</div>
+</div>
+
+<p class="owo">Click below to view more</p>
+
+<p></p><p></p><p></p>
+
+{% endblock %}

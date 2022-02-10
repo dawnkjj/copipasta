@@ -1,0 +1,51 @@
+{% extends "Base.html" %}
+{% block title %}Library Loan System - Reward Form{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<h1 class="display-4">Package A Form</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    {{ render_field(form.package_type, class="form-control") }}
+  </div>
+
+  <div class="form-group">
+    {{ render_field(form.service, class="form-control") }}
+  </div>
+
+  <div class="form-group">
+    {{ render_field(form.installation, class="form-control") }}
+  </div>
+
+<br>
+<h3>Lightings</h3>
+<br>
+  <div class="form-group">
+    {{ render_field(form.brand, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.product1, class="form-check", style="list-style-type:none") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.product2, class="form-check", style="list-style-type:none") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.product3, class="form-check", style="list-style-type:none") }}
+  </div>
+<br>
+<h3>Flooring </h3>
+<br>
+  <div class="form-group">
+    {{ render_field(form.design, class="form-control") }}
+  </div>
+<br>
+  <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

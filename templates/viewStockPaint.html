@@ -1,0 +1,46 @@
+{% extends "base2.html" %}
+{% block title %}Cove Reno
+- Retrieve StockPaints{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Retrieve Paint Stock</h1>
+<div>
+{% if count == 0 %}
+  <p>There are no Paint Stock.</p>
+  {% elif count == 1 %}
+  <p>There is 1 Paint Stock.</p>
+  {% else %}
+  <p>There are {{ count }} Paint Stocks.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>StockPaint ID</th>
+        <th>StockPaint Name</th>
+        <th>StockPaint Count</th>
+        <th>Colour</th>
+        <th>price</th>
+        <th>Date Created</th>
+        <th>Remarks</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for stockPaint in stockPaints_list %}
+      <tr>
+        <td>{{ stockPaint.get_stock_id() }}</td>
+        <td>{{ stockPaint.get_stock_name() }}</td>
+        <td>{{ stockPaint.get_stock_count() }}</td>
+        <td>{{ stockPaint.get_colour() }}</td>
+        <td>{{ stockPaint.get_price() }}</td>
+        <td>{{ stockPaint.get_date_created() }}</td>
+        <td>{{ stockPaint.get_remarks() }}</td>
+                    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

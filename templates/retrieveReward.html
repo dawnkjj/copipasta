@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Retrieve Reward{% endblock %}
+
+{% block content %}
+
+<h1 class="display-4">Retrieve Reward</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no customer reward.</p>
+  {% elif count == 1 %}
+  <p>There is 1 customer reward.</p>
+  {% else %}
+  <p>There are {{ count }} customer reward.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Reward ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Mobile No.</th>
+        <th>Email</th>
+        <th>Redeemed Reward</th>
+        <th>Remarks</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reward in rewards_list %}
+        <tr>
+          <td>{{ reward.get_reward_id() }}</td>
+          <td>{{ reward.get_first_name() }}</td>
+          <td>{{ reward.get_last_name() }}</td>
+          <td>{{ reward.get_phone_no() }}</td>
+          <td>{{ reward.get_email() }}</td>
+          {% if reward.get_reward_type() == "200p" %}
+          <td>$100 Vouchers</td>
+          {% elif reward.get_reward_type() == "500p" %}
+          <td>$400 Voucher</td>
+          {% elif reward.get_reward_type() == "700p" %}
+          <td>$600 Voucher</td>
+          {% endif %}
+          <td>{{ reward.get_remarks() }}</td>
+          <td><a href="/updateReward/{{reward.get_reward_id()}}" class="btn btn-warning">Update</a></td>
+          <td>
+            <form action="{{url_for('delete_reward', id=reward.get_reward_id())}}" method="POST">
+              <!--<input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{reward.get_first_name()}} {{reward.get_last_name()}}?');">-->
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_{{reward.get_reward_id()}}">
+                Delete
+              </button>
+
+              <!-- The Modal -->
+              <div class="modal" id="myModal_{{reward.get_reward_id()}}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Delete Confirmation</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      Are you sure you want to delete {{reward.get_first_name()}} {{reward.get_last_name()}}?
+                    </div>
+
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <input type="submit" value="Delete" class="btn btn-danger">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

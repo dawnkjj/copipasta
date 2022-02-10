@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Cove Reno - Admin Request{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<h1 class="display-4"> Update Customer's Order Status</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    {{ render_field(form.type_of_services , class="form-check", style="list-style-type:none") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.type_of_installation, class="form-check", style="list-style-type:none") }}
+  </div>
+  <h5>Items to be Installed:</h5>
+  <div class="form-group">
+    {{ render_field(form.type_of_items, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.type_of_brands, class="form-control") }}
+  </div>
+  <div>
+    <div class="form-group">
+      {{ render_field(form.items_available, class="form-control") }}
+    </div>
+  </div>
+  <div class="form-group">
+    {{ render_field(form.remarks, class="form-check", style="list-style-type:none") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.startdate, class="form-check", style="list-style-type:none") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.enddate, class="form-check", style="list-style-type:none") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.workcompletion_status, class="form-check", style="list-style-type:none") }}
+  </div>
+  <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+{% endblock %}
